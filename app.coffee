@@ -26,22 +26,22 @@ count = 1
 
 # instance
 bot = new twitter
-	consumer_key:'your_consumer_key',
-	consumer_secret:'your_consumer_secret',
-	access_token_key:'your_access_token',
+	consumer_key:'your_consumer_key'
+	consumer_secret:'your_consumer_secret'
+	access_token_key:'your_access_token'
 	access_token_secret:'your_access_token_secret'
 
 
 job = new cronJob
 	cronTime: cronTime
-	, onTick: ->
+	onTick: ->
 		console.log 'function'
 		bot.updateStatus "test #{count++} #test", (data) ->
 			console.log count
 			job.stop() if count is 10
-	, onComplete: ->
+	onComplete: ->
 		console.log 'complete'
-	, start: false
+	start: false
 
 
 # Runs job.
